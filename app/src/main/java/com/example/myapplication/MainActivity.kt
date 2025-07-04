@@ -1,15 +1,10 @@
 package com.example.myapplication
 
-import android.app.VoiceInteractor
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.WindowInsetsAnimation
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import okhttp3.Call
-import okhttp3.*
-import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
     private lateinit var emailEditText: EditText
@@ -30,7 +25,6 @@ class MainActivity : AppCompatActivity() {
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Please enter email and password.", Toast.LENGTH_SHORT).show()
             } else {
-                // Store credentials in SharedPreferences
                 val sharedPref = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
                 with(sharedPref.edit()) {
                     putString("email", email)
@@ -38,7 +32,6 @@ class MainActivity : AppCompatActivity() {
                     apply()
                 }
                 Toast.makeText(this, "Credentials saved.", Toast.LENGTH_SHORT).show()
-                // Navigate to CitySelectionActivity
                 startActivity(Intent(this, CitySelectionActivity::class.java))
             }
         }
